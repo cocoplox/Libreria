@@ -6,10 +6,6 @@ import org.example.entidades.Libro;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
@@ -23,7 +19,12 @@ public class App
         Transaction transaction = session.beginTransaction();
 
 
-        new Ui();
+        try {
+            InsertTest(session, transaction);
+            System.out.println("Se ha insertado el libro satisfactoriamente");
+        } catch (Exception e) {
+            System.out.println("Ha habido un error a la hora de insertar el libro");
+        }
 
 
         //InsertTest(session,transaction);
